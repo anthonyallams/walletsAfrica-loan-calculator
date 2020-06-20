@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="new.css" />
   </head>
   <body>
+    <!-- Navbar -->
     <nav
       class="navbar navbar-expand-md bg-light navbar-light main-nav p-3"
       style="background: #e5e5e5;"
@@ -49,6 +50,8 @@
         </ul>
       </div>
     </nav>
+
+    <!-- Section 1 -->
     <div class="container">
       <div class="row content-1">
         <div class="col-md-6 header">
@@ -117,8 +120,27 @@
       </div>
     </div>
 
-    <!-- on fail -->
-    <div class="modal">
+    <!-- Error Modal -->
+    <div class="error-modal">
+       <!-- on success -->
+      <section class="success-box">
+        <div class="card text-center">
+          <div class="card-body">
+            
+            <div>
+              <i class="fas fa-times"></i>
+            </div>
+            <div>
+              <img class="check-circle" src="./assets/Img/Vector (1).png" alt="">
+            </div>
+            <h1>Verification successful</h1>
+            <p>Please feel free to apply for loan</p>
+            <button>Continue</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- on fail -->
       <div class="failed-box">
         <div>
             <i class="fas fa-times"></i>
@@ -131,27 +153,6 @@
         <button>Go Back</button>
       </div>
     </div>
-  
-  <!-- on success -->
-  <div class="modal">
-    <section class="success-box">
-      <div class="card text-center">
-        <div class="card-body">
-          
-          <div>
-            <i class="fas fa-times"></i>
-          </div>
-          <div>
-            <img class="check-circle" src="/assets/Img/Vector (1).png" alt="">
-          </div>
-          <h1>Verification successful</h1>
-          <p>Please feel free to apply for loan</p>
-          <button>Continue</button>
-        </div>
-      </div>
-    </section>
-  </div>
-  
 
     <!-- Section 2 -->
     <div class="container section-1">
