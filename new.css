@@ -167,7 +167,7 @@ body {
   .content-1 {
     display: flex;
     flex-direction: column;
-    margin: 2rem 0 0 0;
+    margin-top: 2rem;
   }
   .content h2 {
     /* font-size: 26px; */
@@ -219,9 +219,9 @@ body {
   }
 }
 
-/* My style beginning */
+/* Section 2 style beginning */
 
-/*Section 1*/
+/*Section 2*/
 .section-1 {
   margin-top: 3rem;
   margin-bottom: 3rem;
@@ -332,12 +332,13 @@ body {
     margin-bottom: 0;
   }
 }
-/* My style end */
+/* Section 2 style end */
 
 @media only screen and (min-width: 600px) {
   .illustration {
     text-align: center;
     margin: auto;
+    margin-bottom: 2rem;
   }
   .content h2 {
     text-align: center;
@@ -399,9 +400,16 @@ body {
 }
 
 /* on fail css code */
-.modal{
+.error-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
   display: none;
-  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
 }
 
 .failed-box {
@@ -413,7 +421,7 @@ body {
   width: 400px;
   height: 520px;
   background: #FFFFFF;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 20px rgba(88, 88, 88, 0.25);
   border-radius: 4px;
   text-align: center;
   padding: 1rem;
@@ -426,7 +434,7 @@ body {
 }
 
 /* on success css code */
-.modal .fa-times {
+.error-modal .fa-times {
   position: absolute;
   top: 40px;
   right: 35px;
@@ -436,19 +444,19 @@ body {
 }
 
 
-.modal h1 {
+.error-modal h1 {
   font-size: 30px;
   margin-bottom: 0;
   color: #02354E;
 }
 
-.modal p {
+.error-modal p {
   margin-top: 2px;
   margin-bottom: 50px;
   color: #3585AD;
 }
 
-.modal button {
+.error-modal button {
   width: 255px;
   height: 40px;
   color: #fff;
@@ -459,7 +467,7 @@ body {
   cursor: pointer;
 }
 
-.modal button:hover {
+.error-modal button:hover {
   box-shadow: 1px 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 .check-circle {
@@ -477,6 +485,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
+  box-shadow: 2px 2px 20px rgba(88, 88, 88, 0.25);
 }
 
 .success-box .card {
