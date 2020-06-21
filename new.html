@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>First Page</title>
-    <script src="https://kit.fontawesome.com/55b74517c6.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/55b74517c6.js"
+      crossorigin="anonymous"
+    ></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -79,7 +82,7 @@
                     class="form-control acct"
                     id="usr"
                     placeholder="Phone Number"
-                  /> 
+                  />
                 </div>
                 <div class="checkboxes">
                   <label class="bvn-container"
@@ -118,40 +121,34 @@
     </div>
 
     <!-- on fail -->
-    <div class="modal">
-      <div class="failed-box">
-        <div>
-            <i class="fas fa-times"></i>
-        </div>
-        <div>
-            <i class="far fa-times-circle"></i>
-        </div>
-        <h1>Verification Unsuccessful</h1>
-        <p>Please check your details and try again</p>
-        <button>Go Back</button>
+    <div class="failed-box">
+      <div>
+        <i class="fas fa-times"></i>
       </div>
+      <div>
+        <i class="far fa-times-circle"></i>
+      </div>
+      <h1>Verification Unsuccessful</h1>
+      <p>Please check your details and try again</p>
+      <button>Go Back</button>
     </div>
-  
-  <!-- on success -->
-  <div class="modal">
-    <section class="success-box">
+
+    <!-- on success -->
+    <div class="success-box">
       <div class="card text-center">
         <div class="card-body">
-          
           <div>
             <i class="fas fa-times"></i>
           </div>
           <div>
-            <img class="check-circle" src="/assets/Img/Vector (1).png" alt="">
+            <img class="check-circle" src="/assets/Img/Vector (1).png" alt="" />
           </div>
           <h1>Verification successful</h1>
           <p>Please feel free to apply for loan</p>
           <button>Continue</button>
         </div>
       </div>
-    </section>
-  </div>
-  
+    </div>
 
     <!-- Section 2 -->
     <div class="container section-1">
@@ -162,7 +159,7 @@
             <p>Please fill in desired amount and loan duration</p>
           </div>
           <div class="loan-image">
-            <img src="./assets/Img/Loan Money 1.png" alt="">
+            <img src="./assets/Img/Loan Money 1.png" alt="" />
           </div>
         </div>
         <div class="col-md-6 loan-form-container">
@@ -176,7 +173,12 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">N</span>
                     </div>
-                    <input type="number" class="form-control" id="amount" placeholder="Loan Amount In Naira">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="amount"
+                      placeholder="Loan Amount In Naira"
+                    />
                   </div>
                 </div>
                 <div class="form-group">
@@ -185,48 +187,83 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">%</span>
                     </div>
-                    <input type="number" class="form-control" id="interest" placeholder="Loan Interest">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="interest"
+                      placeholder="Loan Interest"
+                    />
                   </div>
                 </div>
                 <div class="form-group">
                   <label>Duration</label>
-                  <input type="number" class="form-control" id="duration" placeholder="Loan Duration in Years">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="duration"
+                    placeholder="Loan Duration in Years"
+                  />
                 </div>
-                <input type="submit" class="form-control btn loan-btn" id="loan-btn" value="Calculate Payback Amount">
+                <input
+                  type="submit"
+                  class="form-control btn loan-btn"
+                  id="loan-btn"
+                  value="Calculate Payback Amount"
+                />
               </form>
-  
+
               <!-- Spinner -->
               <div id="loading">
-                <img src="./assets/Img/loading.gif" alt="">
+                <img src="./assets/Img/loading.gif" alt="" />
               </div>
-  
+
               <!-- Results -->
               <div id="results" class="pt-4">
-                <h5>Results <span id="close" class="float-right"><i class="fa fa-times"></i></span></h5>
+                <h5>
+                  Results
+                  <span id="close" class="float-right"
+                    ><i class="fa fa-times"></i
+                  ></span>
+                </h5>
                 <div class="form-group">
                   <div class="input-group">
-                     <div class="input-group-prepend">
-                          <span class="input-group-text">Monthly Payment</span>
-                     </div>
-                    <input type="number" class="form-control" id="monthly-payment" disabled>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Monthly Payment</span>
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="monthly-payment"
+                      disabled
+                    />
                   </div>
                 </div>
-  
+
                 <div class="form-group">
                   <div class="input-group">
-                     <div class="input-group-prepend">
-                          <span class="input-group-text">Total Payment</span>
-                     </div>
-                    <input type="number" class="form-control" id="total-payment" disabled>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Total Payment</span>
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="total-payment"
+                      disabled
+                    />
                   </div>
                 </div>
-  
+
                 <div class="form-group">
                   <div class="input-group">
-                     <div class="input-group-prepend">
-                          <span class="input-group-text">Total Interest</span>
-                     </div>
-                    <input type="number" class="form-control" id="total-interest" disabled>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Total Interest</span>
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="total-interest"
+                      disabled
+                    />
                   </div>
                 </div>
               </div>
@@ -237,49 +274,56 @@
     </div>
 
     <!-- Footer -->
-  <footer class="container-fluid footer">
-    <div class="logo">
-      <h3 class="logo-text">LoanAfrika</h3>
-    </div>
-    <div class="row footer-body">
-      <div class="col-md-7">
-        <div class="info">
-          <p>LoanAfrika is a platform where customers can take loans and caluculate the interest rate instantly.</p>
-          <p>Office: Somewhere on planet Earth</p>
-          <p>0700 933 933 933 (Mon-Fri from 9am-5pm) - contact@loanafrika.com</p>
-          <p>&copy; 2020 - till date LoanAfrika Global</p>
-        </div>
+    <footer class="container-fluid footer">
+      <div class="logo">
+        <h3 class="logo-text">LoanAfrika</h3>
       </div>
-      <div class="col-md-5">
-        <div class="row">
-          <div class="col-6">
-            <ul class="quick-links">
-              <li><h5>Quick Links</h5></li>
-              <li>AutoSave &trade;</li>
-              <li>Quick Save &trade;</li>
-              <li>SafeLock &trade;</li>
-              <li>Withdrawals & Breaking</li>
-              <li>Salary Management</li>
-            </ul>
-          </div>
-          <div class="col-6">
-            <ul class="company">
-              <li><h5>Company</h5></li>
-              <li>About</li>
-              <li>FAQ</li>
-              <li>Terms of Use</li>
-              <li>Privacy Policy</li>
-              <li class="social-links">
-                <a><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                <a><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
-                <a><i class="fa fa-instagram" aria-hidden="true"></i></a>
-              </li>
-            </ul>
+      <div class="row footer-body">
+        <div class="col-md-7">
+          <div class="info">
+            <p>
+              LoanAfrika is a platform where customers can take loans and
+              caluculate the interest rate instantly.
+            </p>
+            <p>Office: Somewhere on planet Earth</p>
+            <p>
+              0700 933 933 933 (Mon-Fri from 9am-5pm) - contact@loanafrika.com
+            </p>
+            <p>&copy; 2020 - till date LoanAfrika Global</p>
           </div>
         </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-6">
+              <ul class="quick-links">
+                <li><h5>Quick Links</h5></li>
+                <li>AutoSave &trade;</li>
+                <li>Quick Save &trade;</li>
+                <li>SafeLock &trade;</li>
+                <li>Withdrawals & Breaking</li>
+                <li>Salary Management</li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <ul class="company">
+                <li><h5>Company</h5></li>
+                <li>About</li>
+                <li>FAQ</li>
+                <li>Terms of Use</li>
+                <li>Privacy Policy</li>
+                <li class="social-links">
+                  <a
+                    ><i class="fa fa-facebook-official" aria-hidden="true"></i
+                  ></a>
+                  <a><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                  <a><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
