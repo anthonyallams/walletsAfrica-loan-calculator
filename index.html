@@ -69,21 +69,24 @@
         <div class="col-md-6">
           <div class="card cont">
             <div class="card-body">
-              <form action="" class="form">
+              <span class="heading"></span>
+              <form action="" class="formbvn" id="formbvn">
                 <div class="form-group">
-                  <label>BVN</label>
+                  <label>BVN PIN</label>
                   <input
                     type="number"
+                    name="bvn"
                     class="form-control bvn"
                     placeholder="Bank Verification Number"
                   />
                 </div>
                 <div class="form-group">
-                  <label>Account Number</label>
+                  <label>PHONE NO</label>
                   <input
                     type="number"
-                    class="form-control acct"
-                    id="usr"
+                    name="phone"
+                    class="form-control phone"
+                    id="phoneno"
                     placeholder="Phone Number"
                   />
                 </div>
@@ -93,7 +96,11 @@
                     <span style="color: rgba(53, 133, 173, 0.7);"
                       >Terms and Conditions</span
                     >
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      name="termsCondition"
+                      class="termsCondition"
+                    />
                     <span class="checkmark"></span>
                   </label>
                   <label class="bvn-container"
@@ -101,7 +108,11 @@
                     <span style="color: rgba(53, 133, 173, 0.7);"
                       >Privacy Policy</span
                     >
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      name="privacyPolicy"
+                      class="privacyPolicy"
+                    />
                     <span class="checkmark"></span>
                   </label>
                 </div>
@@ -111,11 +122,8 @@
                     conditions & privacy policy for LoanAfrika Limited.
                   </p>
                 </div>
-                <div class="button">
-                  <a href="#" type="submit" class="btn btn-info verify"
-                    >Verify Details</a
-                  >
-                </div>
+
+                <button class="button btn btn-info verify">Verify BVN</button>
               </form>
             </div>
           </div>
@@ -141,7 +149,7 @@
             </div>
             <h1>Verification successful</h1>
             <p>Please feel free to apply for loan</p>
-            <button>Continue</button>
+            <button class="continue">Continue</button>
           </div>
         </div>
       </section>
@@ -156,12 +164,12 @@
         </div>
         <h1>Verification Unsuccessful</h1>
         <p>Please check your details and try again</p>
-        <button>Go Back</button>
+        <button class="goback">Go Back</button>
       </div>
     </div>
 
     <!-- Section 2 -->
-    <div class="container section-1">
+    <div id="calculate-loan" class="container section-1">
       <div class="row">
         <div class="col-md-6 intro-content">
           <div class="text-header">

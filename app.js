@@ -1,8 +1,11 @@
+// Loan UIs
 const form = document.querySelector("#loan-form");
 const results = document.querySelector("#results");
 const loader = document.querySelector("#loading");
 const close = document.querySelector("#close");
+const loanSection = document.querySelector("#calculate-loan");
 
+// loan calculator Event Listener
 form.addEventListener("submit", function (e) {
   //Hide Results
   results.style.display = "none";
@@ -28,7 +31,7 @@ function calculateLoan() {
   const calculatedPayments = parseFloat(duration.value) * 12;
 
   if (principal <= 0 || calculatedInterest <= 0 || calculatedPayments <= 0) {
-    showError("Please check your inputs");
+    showErrorCalc("Please check your inputs");
     //Hide Loader
     loader.style.display = "none";
   } else {
@@ -47,15 +50,27 @@ function calculateLoan() {
       // Hide loader
       document.getElementById("loading").style.display = "none";
     } else {
-      showError("Please check your inputs");
+      showErrorCalc("Please check your inputs");
       //Hide Loader
       loader.style.display = "none";
     }
   }
 }
-
-function showError(error) {
+// Function to show error for loan calculator
+function showErrorCalc(error) {
   const card = document.querySelector(".loan-calc");
+  const heading = document.querySelector(".heading");
+  const errorDiv = document.createElement("div");
+  errorDiv.className = "alert alert-danger";
+  errorDiv.appendChild(document.createTextNode(error));
+
+  card.insertBefore(errorDiv, heading);
+
+  setTimeout(clearError, 3000);
+}
+// Function to show error for BVN verification
+function showErrorBVN(error) {
+  const card = document.querySelector(".card-body");
   const heading = document.querySelector(".heading");
   const errorDiv = document.createElement("div");
   errorDiv.className = "alert alert-danger";
@@ -76,3 +91,122 @@ close.addEventListener("click", closeResults);
 function closeResults() {
   results.style.display = "none";
 }
+
+// BVN UIs
+const formbvn = document.querySelector("#formbvn");
+// const formbvn = document.querySelector("#formbvn");
+const bvnvalue = document.querySelector(".bvnvalue");
+const submitbvn = document.querySelector(".submitbvn");
+const termsCondition = document.querySelector(".termsCondition");
+const privacyPolicy = document.querySelector(".privacyPolicy");
+
+// const includesTermsConditions = termsCondition.checked;
+// const includesprivacyPolicy = privacyPolicy.checked;
+
+// BVN KEYS
+//KEYS FOR PRODUCTION
+const PUBLIC_KEY = `y4800zy9oo5g`;
+const SECRET_KEY = `lkir2y3q70l0`;
+
+//KEYS FOR TEST
+const PUBLICTEST_KEY = "uvjqzm5xl6bw";
+const SECRETTEST_KEY = "hfucj5jatq8h";
+const TEST_BVN = `21231485915`;
+
+// Function to Update the success or failed bvn verification on UI
+const updateVerification = (status) => {
+  const failedBVN = document.querySelector(".failed-box");
+  const successBVN = document.querySelector(".success-box");
+  const bvnVerificationModal = document.querySelector(".error-modal");
+  const gobackButton = document.querySelector(".goback");
+  const continueButton = document.querySelector(".continue");
+
+  if (status) {
+    bvnVerificationModal.style.display = "block";
+    successBVN.style.display = "block";
+    continueButton.addEventListener("click", () => {
+      successBVN.style.display = "none";
+      formbvn.reset();
+    });
+  } else {
+    bvnVerificationModal.style.display = "block";
+    failedBVN.style.display = "block";
+    gobackButton.addEventListener("click", () => {
+      failedBVN.style.display = "none";
+      formbvn.reset();
+    });
+  }
+};
+
+// Get BVN details
+const getBVNInfo = async (bvnValue) => {
+  const url =
+    "https://cors-anywhere.herokuapp.com/https://sandbox.wallets.africa/account/resolvebvn";
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: new Headers({
+      Authorization: "Bearer " + PUBLICTEST_KEY,
+      "Content-Type": "application/x-www-form-urlencoded",
+    }),
+    body: `bvn=${bvnValue}&secretKey=${SECRETTEST_KEY}`,
+  });
+  const data = await response.json();
+  // const bvn = await data.BVN;
+  if (data.BVN === "21231485915" && data.BVN === formbvn.bvn.value) {
+    // showBVNSpinner()
+    updateVerification(true);
+  } else {
+    updateVerification(false);
+  }
+  // console.log(data);
+  // console.log(data.BVN);
+  // console.log(formbvn.bvn.value === data.BVN);
+  // return showBVNStatusOnUI(data);
+  // return {data}
+};
+// 21231485915
+// getBVNInfo("22153554719").then((data) => console.log(data.BVN));
+
+// .catch((err) => console.log(err));
+
+// const updateBVNui = async (city) => {
+//   const bvnDetails = await
+// };
+
+const getBVNdetails = (e) => {
+  e.preventDefault();
+
+  // Get bvn value
+  const bvnNo = formbvn.bvn.value.trim();
+  const phoneNumber = formbvn.phone.value.trim();
+  const includesTermsConditions = formbvn.termsCondition.checked;
+  const includesprivacyPolicy = formbvn.privacyPolicy.checked;
+
+  console.log("checked", includesTermsConditions, includesprivacyPolicy);
+
+  console.log(termsCondition.value.checked);
+
+  //Error handling
+  // if (
+  //    &&
+  //   !includesTermsConditions == false &&
+  //   !includesprivacyPolicy == false
+  // ) {
+  //   // showErrorBVN("Please enter your BVN correctly and try again");
+  //   console.log("Failed");
+  // } else {
+  //   // getBVNInfo(bvnNo);
+  // }
+  console.log;
+  if (
+    formbvn.termsCondition.checked === false &&
+    formbvn.privacyPolicy.checked === false &&
+    isNaN(bvnNo) &&
+    isNaN(phoneNumber)
+  ) {
+    console.log("Failed");
+  }
+};
+
+formbvn.addEventListener("submit", getBVNdetails);
