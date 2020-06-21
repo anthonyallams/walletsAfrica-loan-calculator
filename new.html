@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="new.css" />
   </head>
   <body>
+    <!-- Navbar -->
     <nav
       class="navbar navbar-expand-md bg-light navbar-light main-nav p-3"
       style="background: #e5e5e5;"
@@ -52,6 +53,8 @@
         </ul>
       </div>
     </nav>
+
+    <!-- Section 1 -->
     <div class="container">
       <div class="row content-1">
         <div class="col-md-6 header">
@@ -120,34 +123,44 @@
       </div>
     </div>
 
-    <!-- on fail -->
-    <div class="failed-box">
-      <div>
-        <i class="fas fa-times"></i>
-      </div>
-      <div>
-        <i class="far fa-times-circle"></i>
+    <!-- Error Modal -->
+    <div class="error-modal">
+      <!-- on success -->
+      <section class="success-box">
+        <div class="card text-center">
+          <div class="card-body">
+            <div>
+              <i class="fas fa-times"></i>
+            </div>
+            <div>
+              <img
+                class="check-circle"
+                src="./assets/Img/Vector (1).png"
+                alt=""
+              />
+            </div>
+            <h1>Verification successful</h1>
+            <p>Please feel free to apply for loan</p>
+            <button>Continue</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- on fail -->
+      <div class="failed-box">
+        <div>
+          <i class="fas fa-times"></i>
+        </div>
+        <div>
+          <i class="far fa-times-circle"></i>
+        </div>
+        <h1>Verification Unsuccessful</h1>
+        <p>Please check your details and try again</p>
+        <button>Go Back</button>
       </div>
       <h1>Verification Unsuccessful</h1>
       <p>Please check your details and try again</p>
       <button>Go Back</button>
-    </div>
-
-    <!-- on success -->
-    <div class="success-box">
-      <div class="card text-center">
-        <div class="card-body">
-          <div>
-            <i class="fas fa-times"></i>
-          </div>
-          <div>
-            <img class="check-circle" src="/assets/Img/Vector (1).png" alt="" />
-          </div>
-          <h1>Verification successful</h1>
-          <p>Please feel free to apply for loan</p>
-          <button>Continue</button>
-        </div>
-      </div>
     </div>
 
     <!-- Section 2 -->
