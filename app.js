@@ -99,6 +99,8 @@ const bvnvalue = document.querySelector(".bvnvalue");
 const submitbvn = document.querySelector(".submitbvn");
 const termsCondition = document.querySelector(".termsCondition");
 const privacyPolicy = document.querySelector(".privacyPolicy");
+const phone = document.querySelector(".phone");
+const bvn = document.querySelector(".bvn");
 
 // const includesTermsConditions = termsCondition.checked;
 // const includesprivacyPolicy = privacyPolicy.checked;
@@ -114,26 +116,47 @@ const SECRETTEST_KEY = "hfucj5jatq8h";
 const TEST_BVN = `21231485915`;
 
 // Function to Update the success or failed bvn verification on UI
-const updateVerification = (status) => {
+const updateVerification = (status, data) => {
   const failedBVN = document.querySelector(".failed-box");
   const successBVN = document.querySelector(".success-box");
   const bvnVerificationModal = document.querySelector(".error-modal");
   const gobackButton = document.querySelector(".goback");
   const continueButton = document.querySelector(".continue");
+  const exitVerificationCard = document.querySelector(".cancelicon");
+  const bvnName = document.querySelector(".bvnName");
 
   if (status) {
     bvnVerificationModal.style.display = "block";
+    bvnName.textContent = `Dear ${data.FirstName} ${data.LastName}, `;
     successBVN.style.display = "block";
     continueButton.addEventListener("click", () => {
+      bvnVerificationModal.style.display = "none";
       successBVN.style.display = "none";
       formbvn.reset();
+      window.location.hash = "calculate-loan";
+    });
+    successBVN.addEventListener("click", (e) => {
+      if (e.target.classList.contains("cancelicon")) {
+        bvnVerificationModal.style.display = "none";
+        successBVN.style.display = "none";
+        formbvn.reset();
+      }
     });
   } else {
     bvnVerificationModal.style.display = "block";
     failedBVN.style.display = "block";
     gobackButton.addEventListener("click", () => {
       failedBVN.style.display = "none";
+      bvnVerificationModal.style.display = "none";
       formbvn.reset();
+    });
+    failedBVN.addEventListener("click", (e) => {
+      if (e.target.classList.contains("cancelicon")) {
+        bvnVerificationModal.style.display = "none";
+        failedBVN.style.display = "none";
+        formbvn.reset();
+        // console.log("clicked cancel");
+      }
     });
   }
 };
@@ -155,9 +178,9 @@ const getBVNInfo = async (bvnValue) => {
   // const bvn = await data.BVN;
   if (data.BVN === "21231485915" && data.BVN === formbvn.bvn.value) {
     // showBVNSpinner()
-    updateVerification(true);
+    updateVerification(true, data);
   } else {
-    updateVerification(false);
+    updateVerification(false, data);
   }
   // console.log(data);
   // console.log(data.BVN);
@@ -180,33 +203,34 @@ const getBVNdetails = (e) => {
   // Get bvn value
   const bvnNo = formbvn.bvn.value.trim();
   const phoneNumber = formbvn.phone.value.trim();
-  const includesTermsConditions = formbvn.termsCondition.checked;
-  const includesprivacyPolicy = formbvn.privacyPolicy.checked;
-
-  console.log("checked", includesTermsConditions, includesprivacyPolicy);
-
-  console.log(termsCondition.value.checked);
 
   //Error handling
-  // if (
-  //    &&
-  //   !includesTermsConditions == false &&
-  //   !includesprivacyPolicy == false
-  // ) {
-  //   // showErrorBVN("Please enter your BVN correctly and try again");
-  //   console.log("Failed");
-  // } else {
-  //   // getBVNInfo(bvnNo);
-  // }
-  console.log;
-  if (
-    formbvn.termsCondition.checked === false &&
-    formbvn.privacyPolicy.checked === false &&
-    isNaN(bvnNo) &&
-    isNaN(phoneNumber)
-  ) {
-    console.log("Failed");
+  if (formbvn.bvn.value.trim() === "" && formbvn.phone.value.trim() === "") {
+    showErrorBVN("Please enter your BVN correctly and try again");
+    // console.log("Failed");
+  } else {
+    getBVNInfo(bvnNo);
+    // console.log("passed");
+  }
+};
+
+// Function to check the box
+const checkTheBox = (e) => {
+  const result = e.target.value;
+
+  // Get bvn value
+  const bvnNo = formbvn.bvn.value;
+  const phoneNumber = formbvn.phone.value;
+
+  if (bvnNo && phoneNumber) {
+    formbvn.termsCondition.checked = true;
+    formbvn.privacyPolicy.checked = true;
+  } else {
+    formbvn.termsCondition.checked = false;
+    formbvn.privacyPolicy.checked = false;
   }
 };
 
 formbvn.addEventListener("submit", getBVNdetails);
+phone.addEventListener("keyup", checkTheBox);
+bvn.addEventListener("keyup", checkTheBox);
